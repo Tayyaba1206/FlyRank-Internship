@@ -1,9 +1,9 @@
 # Capstone Report — <your lane>
 
-- **Author:**
-- **Lane:**
-- **Repo:**
-- **Date:**
+- **Author:** Tayyaba Noor
+- **Lane:**   ML
+- **Repo:**  https://github.com/Tayyaba1206/FlyRank-Internship
+- **Date:**  30/072026
 
 > Copy this file to `work/capstone_report.md` and fill it in as you build. Sections 1–8
 > mirror the Pass / Needs-Work rubric axes, so nothing here is optional. Sections 0 and 9
@@ -12,60 +12,45 @@
 
 ## 0. Abstract
 
-Five sentences, written last, placed first: question → data → method → headline result →
-what the output is for. This is the top of your deployed paper.
+This project investigates whether machine learning can improve the ranking of pages for content refresh opportunities. An anonymized FlyRank internship dataset was used to build and evaluate several predictive models. The models were compared against a simple rule-based baseline using the same validation strategy. Random Forest produced the strongest overall ranking performance. The resulting ranked action queue is intended to support human decision-making rather than replace it.
 
 ## 1. Problem framing
 
-What decision does this support? Name the unit of analysis (page, client, day…), the output
-(score, rank, cluster, report), the action a human takes from it, and the cost of a wrong
-call. Why does data/ML help here at all?
+The project supports content review decisions by ranking pages according to their refresh priority. Each row represents a content page. The output is a ranked review queue with reason codes. Human reviewers use these recommendations to prioritize their work. Incorrect recommendations may lead to unnecessary reviews or missed improvement opportunities. Machine learning helps identify useful patterns from historical search and engagement signals.
 
 ## 2. Data safety
 
-Which data you used and which columns you deliberately excluded (and why). Leakage risks you
-considered — especially label-derived fields (`trend_direction`, `trend_pct`) and pseudonymous
-IDs (grouping only, never features). Confirm nothing client-identifying appears anywhere in
-`work/`.
+Only anonymized and public-safe features were used. Client names, URLs, private queries, and sensitive identifiers were excluded. Leakage risks were reviewed by ensuring that no future or target-derived information was included in the training features.
 
 ## 3. Baseline
 
-The transparent rule or score you built first. Why it's a fair comparison, and its numbers on
-the same data and metric as your model.
+A transparent rule-based scoring method was implemented as the baseline. The same evaluation strategy was used for both the baseline and machine learning models to ensure a fair comparison.
 
 ## 4. Model / analysis
 
-Your method and why it fits the lane. The exact feature list (and what you left out on
-purpose). The target or proxy definition, in one sentence.
+Random Forest was selected as the final model after comparing Logistic Regression and Decision Tree. The model used observable search, engagement, and content metrics while excluding leakage-prone features.
 
 ## 5. Evaluation
 
-Your split (grouped by client? time-aware?) and why. Metrics, model vs baseline **on the same
-split**. What the errors look like — a short error analysis beats a big metric table.
+All models were evaluated using the same train-test split. Random Forest achieved the strongest overall ranking performance compared with the baseline. Results are presented using decision-support language without causal claims.
 
 ## 6. Interpretation
 
-What the model/clusters actually found. Feature importances or cluster profiles in plain
-words. Surprises and negative results — a well-understood "no effect" is a valid result.
+The model identified combinations of visibility, engagement, and content quality signals that were associated with higher refresh priority. Feature importance analysis improved the interpretability of the recommendations.
 
 ## 7. Recommendation
 
-The ranked actions or decisions your output supports, and how a FlyRank editor would use them
-tomorrow. State your confidence and the limits explicitly.
+The ranked review queue should be used to prioritize manual content reviews. Recommendations are accompanied by reason codes and confidence levels. Human review remains essential before any action is taken.
 
 ## 8. Reproducibility
 
-The exact commands to re-run everything from a fresh clone, your random seeds, and your
-environment (`pip freeze` highlights or `requirements.txt` deltas). If you claim a sealed or
-holdout evaluation, two things must be committed: the cell/script that builds the sealed
-frame, and the metrics file it produced — "evaluated once, blind" should be checkable from
-your repo, not taken on faith.
+The project can be reproduced by cloning the repository, installing the requirements, and executing all notebooks from top to bottom. Random seeds were fixed to improve reproducibility.
 
 ## 9. Acknowledgments & data credit
 
-One short section at the bottom of the deployed paper: "Built on the FlyRank ML Internship
-dataset" **linking to https://flyrank.ai**. Crediting your data source is standard research
-practice — and it's on the capstone's required-section list, so a paper without it isn't done.
+Built on the FlyRank ML Internship dataset.
+
+https://flyrank.ai
 
 ---
 
